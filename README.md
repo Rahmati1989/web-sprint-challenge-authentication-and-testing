@@ -74,6 +74,22 @@ After finishing your required elements, you can push your work further. These go
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+Answer:
+JSON Web Tokens and session cookies both offer user authentication for websites.
+JSON web tokens have cryptographic signatures, and that’s not the case with session cookies.
+JSON web tokens are stateless because claims are stored client-side, rather than in the server’s memory.
+session cookies are stored in the server’s memory, it has the potential of using a lot more resources if the website or app sees a lot of traffic.
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+Answer:
+Bcrypt is one of the most used encryption libraries today.
+Bcrypt hashes passwords so if in case it hacks it will be not availibale in plain text.
+
 3. How are unit tests different from integration and end-to-end testing?
+Answer:
+Unit tests test a part of the the code or just a function to make sure that is working properly, while 
+Integration tests and E22 tests are testing functions togeather that they work as whole. 
+
 4. How does _Test Driven Development_ change the way we write applications and tests?
+Answer:
+TDD starts with writting test first and then make it pass, it is hard and take lots of time but it saves times and make our code clean that all the parts of the project are working properly.

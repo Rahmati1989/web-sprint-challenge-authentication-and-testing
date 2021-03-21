@@ -7,9 +7,9 @@ const request = require('supertest');
 const server = require('./server');
 const db = require('../data/dbConfig');
 const { truncate } = require('../data/dbConfig');
-const testUser = {username: 'testing', password: 'testing'}
+const testUser = {username: 'liba', password: 'liba'}
 
-describe('server.js', () => {
+describe('test server', () => {
     describe('Get request for jokes', () => {
         it('should return a status 400 when not logged in', async () => {
             const res = await request(server).get('/api/jokes')
@@ -20,7 +20,7 @@ describe('server.js', () => {
             expect(res.type).toBe('application/json')
         });
     });
-describe("registering", () => {
+describe("test registration", () => {
         it('should return a status code of 201 when adding a new user', async () => {
             await db('users').truncate()
             const res = await request(server)
@@ -28,24 +28,24 @@ describe("registering", () => {
             .send(testUser);
             expect(res.status).toBe(201)
         });
-        it('should return a status code of 500 with an invalid user', async () => {
+        it('invilad user authentication', async () => {
             const res = await request(server)
             .post('/api/auth/register')
-            .send({user: "test", pass: "1234*"});
+            .send({user: "rafi", pass: "abc123*"});
             expect(res.status).toBe(500);
         });
     });
-describe("loging in", ()=> {
-        it('should return status of 200 with test user', async () => {
+describe("user login", ()=> {
+        test('should return status of 200 with test user', async () => {
             const res = await request(server)
             .post('/api/auth/login')
             .send(testUser);
             expect(res.status).toBe(200)
         })
-        it('should return 401 with invalid user', async () => {
+        test('should return 401 with invalid user', async () => {
             const res = await request(server)
             .post('/api/auth/login')
-            .send({ username: 'Idk', password: 'Idk' })
+            .send({ username: 'mohammad', password: '123abc' })
             expect(res.status).toBe(401)
         })
     });
